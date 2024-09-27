@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { User } from "@app/models/user";
+import { User } from "@app/models/user/user";
 import { AuthService } from "@app/services/auth.service";
-
+ 
 @Component({
   selector: 'app-profile',
   standalone: true,

@@ -1,13 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthResponse } from "@app/models/authResponse";
-import { User } from "@app/models/user";
+import { AuthResponse } from "@app/models/user/authResponse";
+import { User } from "@app/models/user/user";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { environment } from "src/environments/environment";
 
  
-
 @Injectable({
   providedIn: 'root'
 })

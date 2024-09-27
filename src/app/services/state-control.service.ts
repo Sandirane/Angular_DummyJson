@@ -1,22 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Product } from '@app/models/product';
+import { Injectable } from '@angular/core';  
+import { ProductState } from '@app/models/product/productState';
  
-interface ProductState {
-  products: Product[];
-  limit: number;
-  skip: number;
-  total: number;
-  search: string;
-  status: string;
-  errorMessage: string;
-}
-
-
 @Injectable({
   providedIn: 'root'
 })
 
 export class StateControlService {
+
+  constructor() { }
 
   public productsState: ProductState = {
     products: [],
@@ -27,8 +18,6 @@ export class StateControlService {
     status: "",
     errorMessage: ""
   };
-
-  constructor() { }
 
   public setProductState(state: Partial<ProductState>): void {
     this.productsState = { ...this.productsState, ...state };

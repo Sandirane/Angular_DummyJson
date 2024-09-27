@@ -2,10 +2,10 @@ import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import { ReactiveFormsModule, FormGroup, FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
-import { User } from "@app/models/user";
-import { AuthService } from "@app/services/auth.service"; 
 import { AlertComponent } from "@app/components/alert/alert.component";
-
+import { User } from "@app/models/user/user";
+import { AuthService } from "@app/services/auth.service";
+ 
 @Component({
   selector: 'app-login',
   standalone: true,

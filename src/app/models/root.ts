@@ -1,6 +1,6 @@
-import { Product } from "./product";
-import { User } from "./user"
-
+import { Product } from "./product/product";
+import { User } from "./user/user";
+ 
 export interface Root {
     users: User[]
     products: Product[];

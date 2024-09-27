@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Product } from '../../models/product';
-import { ProductService } from '../../services/product.service';
-import { CommonModule } from '@angular/common';
-
+import { CommonModule } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Product } from "@app/models/product/product";
+import { ProductService } from "@app/services/product.service";
+ 
 @Component({
   selector: 'app-product-detail',
   standalone: true,

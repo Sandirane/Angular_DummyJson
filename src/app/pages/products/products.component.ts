@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { CommonModule } from '@angular/common';
-import { ProductService } from '@app/services/product.service';
-import { StateControlService } from '@app/services/state-control.service';
-import { FormsModule } from '@angular/forms';
-import { CardAnnounceComponent } from '@app/components/card-announce/card-announce.component';
-import { Product } from '@app/models/product';
-
+import { CommonModule } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { Router } from "@angular/router";
+import { CardAnnounceComponent } from "@app/components/card-announce/card-announce.component";
+import { Product } from "@app/models/product/product";
+import { ProductService } from "@app/services/product.service";
+import { StateControlService } from "@app/services/state-control.service";
+ 
 @Component({
   selector: 'app-products',
   standalone: true,

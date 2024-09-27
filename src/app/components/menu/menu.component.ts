@@ -6,6 +6,7 @@ import { LoginComponent } from '../../pages/login/login.component';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-menu',
@@ -23,12 +24,31 @@ import { Observable } from 'rxjs';
 
 export class MenuComponent implements OnInit {
 
+  navbarCollapsed = true;
+  currentAction: any
+  actions: Array<any> = [
+    { title: "Home", "route": "/home", icon: "house" },
+    { title: "Products", "route": "/products", icon: "box" },
+    { title: "Profile", "route": "/profile", icon: "person" },
+  ]
+
   isLoggedIn$: Observable<boolean> | undefined;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    public loadingService: LoadingService
+  ) { }
 
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isAuthenticated$;
+  }
+
+  toggleNavbar() {
+    this.navbarCollapsed = !this.navbarCollapsed;
+  }
+
+  setCurrentAction(action: any) {
+    this.currentAction = action;
   }
 
   logout() {

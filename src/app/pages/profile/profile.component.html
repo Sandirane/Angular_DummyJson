@@ -1,0 +1,27 @@
+@if(user){
+<div class="profile-card">
+    <div class="profile-image">
+        <img [src]="user.image" alt="Profile Image">
+    </div>
+    <div class="profile-info">
+        <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+        <p><em>age: {{ user.age }}</em></p>
+
+        <div class="info-section">
+            <h5>INFORMATION</h5>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Phone:</strong> {{ user.phone }}</p>
+        </div>
+
+        <div class="info-section">
+            <h5>COMPANY</h5>
+            <p><strong>Job:</strong> {{ user.company.department}}</p>
+            <p><strong>Role:</strong> {{ user.role }}</p>
+        </div>
+
+
+    </div>
+</div>
+} @else {
+<p>Veuillez vous connecter pour voir votre profil.</p>
+}

@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <div class="row align-items-stretch">
+
+        <div class="col-md-6 d-flex">
+            <div class="descriptive-box p-4 border bg-light w-100">
+                <h3>Comment se connecter</h3>
+                <p><strong>Rôle Admin :</strong></p>
+                <ul>
+                    <li><strong>Nom d'utilisateur :</strong> emilys</li>
+                    <li><strong>Mot de passe :</strong> emilyspass</li>
+                </ul>
+                <p><strong>Rôle User :</strong></p>
+                <ul>
+                    <li><strong>Nom d'utilisateur :</strong> evelyns</li>
+                    <li><strong>Mot de passe :</strong> evelynspass</li>
+                </ul>
+                <p>Veuillez utiliser les identifiants ci-dessus pour vous connecter avec les rôles appropriés.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 d-flex">
+            <div class="login-box p-4 border bg-white w-100">
+                <h2>Login</h2>
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="username" placeholder="Nom d'utilisateur"
+                            formControlName="username">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="Mot de passe"
+                            formControlName="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Connexion</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

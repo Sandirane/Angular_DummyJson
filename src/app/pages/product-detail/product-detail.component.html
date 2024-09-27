@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-body">
+        @if(product) {
+
+        <h2 >{{ product.title }}</h2>
+        <img [src]="product.thumbnail" alt="{{ product.title }}" />
+        <p>{{ product.description }}</p>
+        <p><strong>Prix:</strong> {{ product.price }} €</p>
+        <p><strong>Marque:</strong> {{ product.brand }}</p>
+        <p><strong>Catégorie:</strong> {{ product.category }}</p>
+
+        }
+    </div>
+
+</div>

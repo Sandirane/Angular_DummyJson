@@ -1,12 +1,33 @@
 <div class="container mt-5">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @for (product of products; track product.title; let i = $index) {
+
+    <form (ngSubmit)="searchProducts()">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="stateControl.productsState.search"
+                name="search">
+            <button class="btn btn-success" type="submit">Go</button>
+        </div>
+    </form>
+ 
+    <app-card-announce />
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+        @for (product of products; track product.title;) {
         <div class="col">
             <div class="card h-100">
-                <img [src]="product.thumbnail" alt="{{ product.title }}" class="card-img-top">
+                <img [src]="product.thumbnail" alt="{{ product.title }}" class="card-img-top w-50 d-block mx-auto">
                 <div class="card-body">
-                    <h5 class="card-title">{{ product.title }}</h5>
-                    <p class="card-text">{{ product.price }} €</p>
+                    <div class="row">
+                        <div class="col p-3 ">
+                            <h4>
+                                <span class="badge rounded-pill bg-secondary">
+                                    {{ product.price }} €
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="col p-3 ">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <a (click)="viewProductDetails(product.id)" class="btn btn-primary">More detail</a>
@@ -15,4 +36,15 @@
         </div>
         }
     </div>
+
+    <div class="mb-3 mt-3">
+
+        <p>Produits affichés : {{ products.length }} / {{ stateControl.productsState.total }}</p>
+        <p>Page {{ currentPage }} / {{ totalPages }}</p>
+
+        <button class="btn btn-secondary" (click)="previousPage()"
+            [disabled]="stateControl.productsState.skip === 0">Précédent</button>
+        <button class="btn btn-secondary" (click)="nextPage()" [disabled]="currentPage === totalPages">Suivant</button>
+    </div>
+
 </div>

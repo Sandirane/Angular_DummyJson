@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { User } from '../../models/user';
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { ReactiveFormsModule, FormGroup, FormControl } from "@angular/forms";
+import { Router } from "@angular/router";
+import { User } from "@app/models/user";
+import { AuthService } from "@app/services/auth.service"; 
+import { AlertComponent } from "@app/components/alert/alert.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, AlertComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -21,25 +22,31 @@ export class LoginComponent {
 
   user?: User
 
+  authenticationFailed = false;
+  msgSuccess = false;
+  errorMessage = '';
+  successMessage = '';
+
   constructor(private authService: AuthService, private router: Router) { }
 
   login() {
+    this.authenticationFailed = false;
 
-    console.log(
-      `Login username:${this.loginForm.get('username')?.value || ''} / Login password: ${this.loginForm.get('password')?.value || ''}`
-    );
-
-    this.authService
-      .login({
-        username: this.loginForm.get('username')?.value || '',
-        password: this.loginForm.get('password')?.value || ''
-      })
+    this.authService.login({
+      username: this.loginForm.get('username')?.value || '',
+      password: this.loginForm.get('password')?.value || ''
+    })
       .subscribe(({
         next: () => {
-          alert('Connexion réussi.');
-          this.router.navigate(['/home']);
-        }, error: (err) => {
-          console.error("login error:", err)
+          this.msgSuccess = true;
+          this.successMessage = 'Connexion réussie.';
+          setTimeout(() => {
+            this.router.navigate(['/home']);
+          }, 500);
+        },
+        error: () => {
+          this.authenticationFailed = true;
+          this.errorMessage = 'Problème d\'e-mail ou mot de passe.';
         }
       }));
   }

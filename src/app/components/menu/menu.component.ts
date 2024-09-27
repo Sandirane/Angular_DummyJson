@@ -1,12 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { HomeComponent } from '../../pages/home/home.component';
-import { ProfileComponent } from '../../pages/profile/profile.component';
-import { LoginComponent } from '../../pages/login/login.component';
-import { AuthService } from '../../services/auth.service';
-import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
-import { LoadingService } from '../../services/loading.service';
+import { CommonModule } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { RouterLink } from "@angular/router";
+import { HomeComponent } from "@app/pages/home/home.component";
+import { LoginComponent } from "@app/pages/login/login.component";
+import { ProfileComponent } from "@app/pages/profile/profile.component";
+import { AuthService } from "@app/services/auth.service";
+import { LoadingService } from "@app/services/loading.service";
+import { Observable } from "rxjs";
+
+ 
+
+interface Action {
+  title: string;
+  route: string;
+  icon: string;
+}
 
 @Component({
   selector: 'app-menu',
@@ -25,8 +33,9 @@ import { LoadingService } from '../../services/loading.service';
 export class MenuComponent implements OnInit {
 
   navbarCollapsed = true;
-  currentAction: any
-  actions: Array<any> = [
+  currentAction: Action | null = null;
+
+  actions: Array<Action> = [
     { title: "Home", "route": "/home", icon: "house" },
     { title: "Products", "route": "/products", icon: "box" },
     { title: "Profile", "route": "/profile", icon: "person" },
@@ -47,12 +56,11 @@ export class MenuComponent implements OnInit {
     this.navbarCollapsed = !this.navbarCollapsed;
   }
 
-  setCurrentAction(action: any) {
+  setCurrentAction(action: Action) {
     this.currentAction = action;
   }
 
   logout() {
     this.authService.logout();
-    alert('Vous avez été déconnecté.');
   }
 }

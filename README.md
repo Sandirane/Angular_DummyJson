@@ -11,5 +11,5 @@ ng serve
 
 port : http://localhost:4200/
 
-# Lien vers l'application
+# Application link
 https://angulardummyjson.web.app/login
